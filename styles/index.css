@@ -1,6 +1,4 @@
-body, ul, li {
-  margin: 0;
-  padding: 0;
+body {
   background-color: #FAFAFA;
 }
 
@@ -8,8 +6,7 @@ container {
   position: relative;
   display: block;
   width: 960px;
-  margin: 0 auto;
-  padding-top: 5px;
+  margin: 10px auto 10px auto;
   background-color: #FFF;
   border: 1px solid #EEE;
   padding: 20px;
@@ -28,26 +25,27 @@ container {
 }
 
 #events {
-  width: 420px;
+  width: 435px;
+  display: inline-block;
+}
+
+#events #header {
+  width: 100%;
+  height: 40px;
 }
 
 #events #showing {
   position: relative;
-  color: #333;
-  margin-bottom: 5px;
-  display: block;
-  width: 100%;
+  top: 15px;
 }
 
-#events #showing #change {
-  position: absolute;
-  color: #666;
-  right: 0;
+#events #change {
+  float: right;
 }
 
 .event {
   margin-bottom: 10px;
-  width: 400px;
+  width: 415px;
   background-color: #eee;
   border-radius: 5px;
   padding: 10px;
@@ -58,33 +56,24 @@ container {
   border: 1px solid #999;
 }
 
-.event .info {
-  width: 400px;
-  display: inline-block;
+.event .label {
+  vertical-align: top;
 }
 
-.event .info .letter {
-  border-right: 1px solid #666;
-  padding-right: 3px;
+.event .info {
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .event .bitebrew {
-  width: 80px;
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 20px;
   display: none;
 }
 
-.event .bite, .event .brew {
-  display: block;
-  margin-top: 5px;
-}
-
 #map_canvas {
-  position: absolute;
-  top: 69px;
-  left: 470px;
+  display: inline-block;
   width: 500px;
   height: 500px;
+  vertical-align: top;
+  margin-top: 40px;
+  margin-left: 20px;
 }
