@@ -1,22 +1,22 @@
 (function($){
-  var location;
+  var location = {latitude: 37.760673, longitude: -122.429968};
   var venues = new Array();
   var events = new Array();
   var date = new Date();
   var map;
 
   $(window).ready(function(){
-    Map.init({latitude: 37.760673, longitude: -122.429968});
+    Map.init(location);
     initSonic();
   });
 
-  navigator.geolocation.watchPosition(function(pos){
-    //Only execute the following on the initial location return
-    if (!location) {
-      console.log("Location: ", pos.coords.latitude, ' : ', pos.coords.longitude);
-      location = pos.coords;
-    }
-  });
+  // navigator.geolocation.watchPosition(function(pos){
+  //   //Only execute the following on the initial location return
+  //   if (!location) {
+  //     console.log("Location: ", pos.coords.latitude, ' : ', pos.coords.longitude);
+  //     location = pos.coords;
+  //   }
+  // });
 
   function initSonic() {
     Sonic.key = 'b3b4c28f';

@@ -21,6 +21,7 @@
     var marker = new google.maps.Marker({
       map: Map.map,
       position: point,
+      animation: google.maps.Animation.DROP,
       icon: 'images/markers/red_Marker'+coords.letter+'.png',
     });
 
@@ -28,8 +29,14 @@
     return marker;
   }
 
-  Map.removeMarker = function(coords) {
-
+  Map.getMarkerById = function(id) {
+    var marker;
+    $.each(Map.markers, function(key, val){
+      if (val.__gm_id == id) {
+        marker = val;
+      }
+    });
+    return marker;
   }
 
   window.Map = Map;
