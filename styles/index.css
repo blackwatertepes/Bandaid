@@ -1,3 +1,60 @@
-#event {
-  margin: 5px;
+body, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+container {
+  position: relative;
+  display: block;
+  width: 960px;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+
+#titles {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#title, #subtitle {
+  display: inline;
+  margin-right: 20px;
+}
+
+.event {
+  margin-bottom: 10px;
+  width: 400px;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+
+.event:hover, .event:active {
+  border: 1px solid #999;
+}
+
+.event .info {
+  width: 300px;
+  display: inline-block;
+}
+
+.event .bitebrew {
+  width: 80px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+}
+
+.event .bite, .event .brew {
+  display: block;
+  margin-top: 5px;
+}
+
+#map_canvas {
+  position: absolute;
+  top: 50px;
+  left: 460px;
+  width: 500px;
+  height: 500px;
 }
