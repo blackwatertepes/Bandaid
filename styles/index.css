@@ -35,8 +35,13 @@ container {
 }
 
 .event .info {
-  width: 300px;
+  width: 400px;
   display: inline-block;
+}
+
+.event .info .letter {
+  border-right: 1px solid #666;
+  padding-right: 3px;
 }
 
 .event .bitebrew {
@@ -44,6 +49,7 @@ container {
   display: inline-block;
   vertical-align: top;
   margin-left: 20px;
+  display: none;
 }
 
 .event .bite, .event .brew {
