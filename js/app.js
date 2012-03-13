@@ -11,31 +11,10 @@
       console.log("Location: ", pos.coords.latitude, ' : ', pos.coords.longitude);
       location = pos.coords;
 
-      initMap(location);
+      Map.init(location);
       initSonic();
     }
   });
-
-  function initMap(coords) {
-    var myOptions = {
-      zoom: 12,
-      center: new google.maps.LatLng(coords.latitude, coords.longitude),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-    //addMapPoint(coords);
-  }
-
-  function addMapPoint(coords) {
-    console.log(coords);
-    var point = new google.maps.LatLng(coords.latitude, coords.longitude);
-    var marker = new google.maps.Marker({
-      map: map,
-      position: point,
-    });
-    //marker.setMap(map);
-  }
 
   function initSonic() {
     Sonic.key = 'b3b4c28f';
@@ -141,7 +120,7 @@
       var place = val.venue_name + ', ' + val.venue_city;
       var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
       eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id);
-      addMapPoint({latitude: v.lat, longitude: v.lon});
+      Map.addMarker({latitude: v.lat, longitude: v.lon});
     });
   }
 
