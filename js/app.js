@@ -5,14 +5,16 @@
   var date = new Date();
   var map;
 
+  $(window).ready(function(){
+    Map.init({latitude: 37.760673, longitude: -122.429968});
+    initSonic();
+  });
+
   navigator.geolocation.watchPosition(function(pos){
     //Only execute the following on the initial location return
     if (!location) {
       console.log("Location: ", pos.coords.latitude, ' : ', pos.coords.longitude);
       location = pos.coords;
-
-      Map.init(location);
-      initSonic();
     }
   });
 
@@ -119,8 +121,7 @@
       var time = Datetime.formatDatetime(val.start_datetime);
       var place = val.venue_name + ', ' + val.venue_city;
       var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
-      eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id);
-      Map.addMarker({latitude: v.lat, longitude: v.lon});
+      eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id, v.lat, v.lon);
     });
   }
 
@@ -128,8 +129,8 @@
     eventsView.addImage("http://img.freebase.com/api/trans/raw" + id);
   }
 
-  window.showBite = function(id) {
-    console.log(id);
+  window.showBite = function(marker_id, event_id) {
+    console.log(marker_id);
   }
 
   window.showBrew = function(id) {

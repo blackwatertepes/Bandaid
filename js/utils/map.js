@@ -1,7 +1,7 @@
 (function(window) {
 
   Map.map;
-  var markersArray = [];
+  Map.markers = [];
 
   function Map() {
     throw ("Sonic cannot be instantiated.");
@@ -21,7 +21,15 @@
     var marker = new google.maps.Marker({
       map: Map.map,
       position: point,
+      icon: 'images/markers/red_Marker'+coords.letter+'.png',
     });
+
+    Map.markers.push(marker);
+    return marker;
+  }
+
+  Map.removeMarker = function(coords) {
+
   }
 
   window.Map = Map;
