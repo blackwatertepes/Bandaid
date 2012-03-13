@@ -1,6 +1,7 @@
 body, ul, li {
   margin: 0;
   padding: 0;
+  background-color: #FAFAFA;
 }
 
 container {
@@ -9,6 +10,11 @@ container {
   width: 960px;
   margin: 0 auto;
   padding-top: 5px;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+  padding: 20px;
+  padding-top: 0;
+  min-height: 550px;
 }
 
 #titles {
@@ -59,8 +65,8 @@ container {
 
 #map_canvas {
   position: absolute;
-  top: 50px;
-  left: 460px;
+  top: 47px;
+  left: 470px;
   width: 500px;
   height: 500px;
 }
