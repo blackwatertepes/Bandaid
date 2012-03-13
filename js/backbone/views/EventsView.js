@@ -9,6 +9,11 @@ var EventsView = Backbone.View.extend({
   },
 
   render: function() {
+    $('#events', this.el).append("<span id='showing'>Showing concerts for <span id='date'></span> <span id='change'>Change Date</span></span>");
+  },
+
+  updateDate: function(date) {
+    $('#showing #date').text(date);
   },
 
   addItem: function(time, name, place, event_url, map_url, event_id, lat, lon) {

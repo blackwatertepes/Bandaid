@@ -7,6 +7,10 @@
   var spinner;
 
   $(window).ready(function(){
+    //Show the date
+    eventsView.updateDate(Datetime.getDay(date.getDay())+', '+Datetime.getMonth(date.getMonth())+' '+Datetime.getDate(date.getDate()));
+
+    //Add a spinner until concert events are loaded
     spinner = new Spinner().spin();
     $('#events').append(spinner.el);
     $(spinner.el).css("left", "200px").css("top", "200px");

@@ -14,7 +14,7 @@ container {
   border: 1px solid #EEE;
   padding: 20px;
   padding-top: 0;
-  min-height: 550px;
+  min-height: 570px;
 }
 
 #titles {
@@ -25,6 +25,24 @@ container {
 #title, #subtitle {
   display: inline;
   margin-right: 20px;
+}
+
+#events {
+  width: 420px;
+}
+
+#events #showing {
+  position: relative;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+  width: 100%;
+}
+
+#events #showing #change {
+  position: absolute;
+  color: #666;
+  right: 0;
 }
 
 .event {
@@ -65,7 +83,7 @@ container {
 
 #map_canvas {
   position: absolute;
-  top: 47px;
+  top: 69px;
   left: 470px;
   width: 500px;
   height: 500px;
