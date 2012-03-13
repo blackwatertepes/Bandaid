@@ -21,6 +21,9 @@
   }
 
   Sonic.getEvents = function(callback, ids, _host, _offset) {
+    if (typeof ids[0] == 'object') {
+      ids = Sonic.getIds(ids, 'event_id');
+    }
     var host = _host || false;
     var offset = _offset || 0;
     Sonic.request('event/get', callback, {event_id: ids, host: host, offset: offset})
@@ -85,7 +88,14 @@
   }
 
   Sonic.getPerformers = function(callback, ids) {
-    Sonic.request('performer/get', callback, {performer_id: ids});
+    if (typeof ids[0] == 'object') {
+      ids = Sonic.getIds(ids, 'performer_ids');
+    }
+    if (ids.length > 0) {
+      Sonic.request('performer/get', callback, {performer_id: ids});
+    } else {
+      callback(null);
+    }
   }
 
   Sonic.getPerformersByGUID = function(callback, guids, _host) {
