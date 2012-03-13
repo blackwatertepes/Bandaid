@@ -4,8 +4,13 @@
   var events = new Array();
   var date = new Date();
   var map;
+  var spinner;
 
   $(window).ready(function(){
+    spinner = new Spinner().spin();
+    $('#events').append(spinner.el);
+    $(spinner.el).css("left", "200px").css("top", "200px");
+
     Map.init(location);
     initSonic();
   });
@@ -32,6 +37,8 @@
   // }
 
   function gotVenues(v) {
+    $(spinner.el).remove();
+
     console.log('Total Venues:',v.length);
     venues = getVenuesByLatLong(v, location);
     console.log('Local Venues',venues.length);
