@@ -8,17 +8,18 @@ var EventsView = Backbone.View.extend({
   },
 
   render: function() {
-    var self = this;
-    $(this.el).append("<h2>Local Events in San Francisco for tonight!</h2>");
-    $(this.el).append("<div id='events'></div>")
   },
 
-  addItem: function(time, name, place, event_url, map_url) {
-    $('#events', this.el).append("<div id='event'>"+time+"<br/><a href='"+event_url+"'>"+name+"</a><br/><a href='"+map_url+"'>"+place+"</a></div>");
+  addItem: function(time, name, place, event_url, map_url, id) {
+    $('#events', this.el).append("<div class='event'><div class='info'>"+time+"<br/><a href='"+event_url+"'>"+name+"</a><br/><a href='"+map_url+"'>"+place+"</a></div><div class='bitebrew'><a class='bite' onclick='showBite("+id+")' href='#'>Get a Bite</a><a class='brew' onclick='showBrew("+id+")' href='#'>Get a Brew</a></div></div>");
   },
 
   setLocation: function(location) {
     $('#location', this.el).text('for ' + location)
+  },
+
+  addImage: function(url) {
+    $('#images', this.el).append("<img src="+url+"/>");
   }
 });
 
