@@ -37,8 +37,6 @@
   // }
 
   function gotVenues(v) {
-    $(spinner.el).remove();
-
     console.log('Total Venues:',v.length);
     venues = getVenuesByLatLong(v, location);
     console.log('Local Venues',venues.length);
@@ -74,6 +72,7 @@
   }
 
   function gotEvents(e) {
+    $(spinner.el).remove();
     //console.log(e);
     if (e) {
       var ev = getEventsToday(e);
