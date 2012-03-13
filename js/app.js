@@ -119,6 +119,10 @@
       events.push(val);
       var v = getVenueByID(val.venue_id);
       var time = Datetime.formatDatetime(val.start_datetime);
+      if (val.start_datetime.substr(11, 2) == '00') {
+        var hour = val.name.match(/\d{1,2}:\d{0,2} ?[aApP][mM]/)[0].replace(' ', '');
+        time = time.replace('00:00am', hour.toLowerCase());
+      }
       var place = val.venue_name + ', ' + val.venue_city;
       var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
       eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id, v.lat, v.lon);
