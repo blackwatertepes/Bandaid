@@ -3,6 +3,7 @@
     <title>Bandaid | Concerts Tonight</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/cal.css" />
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
     <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
@@ -33,13 +34,15 @@
     </container>
 
     <script id="eventsTP" type="text/template">
-      <div id="events">
-        <div id='header'>
-          <span id='showing'>Showing concerts for <span id='date'>{{date}}</span></span>
-          <button id='change' class='btn btn-mini'><i class='icon-calendar'></i> Change Date</button>
+      <div id="eventsView">
+        <div id="events">
+          <div id='header'>
+            <span id='showing'>Showing concerts for <span id='date'>{{date}}</span></span>
+            <button id='change' class='btn btn-mini' onclick='appView.changeDate()'><i class='icon-calendar'></i> Change Date</button>
+          </div>
         </div>
+        <div id="map_canvas"></div>
       </div>
-      <div id="map_canvas"></div>
     </script>
 
     <script id="eventTP" type="text/template">
@@ -53,6 +56,80 @@
             <a class='brew' onclick='showBrew("+marker.__gm_id+", "+event_id+")' href='#'>Get a Brew</a>
         </div>
       </div>
+    </script>
+
+    <script id="calendarTP" type="text/template">
+      <calendar>
+        <header>March</header>
+        <table id="cal">
+          <thead>
+            <tr>
+              <th>Sunday</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class='label'>1</span>
+                <ul>
+                  <li class="artist">Louis Katz</li>
+                  <li class="artist">CHARLES NEVILLE & YOUSSOUPHA SIDEBE @ 8:00PM</li>
+                  <li class="artist">Mary Lou Williams</li>
+                  <li class="artist">Memoryhouse</li>
+                </ul>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </calendar>
     </script>
 
     <script src="js/backbone/views/EventView.js"></script>
