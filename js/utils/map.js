@@ -39,5 +39,33 @@
     return marker;
   }
 
+  // Removes the overlays from the map, but keeps them in the array
+  Map.clearOverlays = function() {
+    if (Map.markers) {
+      for (i in Map.markers) {
+        Map.markers[i].setMap(null);
+      }
+    }
+  }
+
+  // Shows any overlays currently in the array
+  Map.showOverlays = function() {
+    if (Map.markers) {
+      for (i in Map.markers) {
+        Map.markers[i].setMap(Map.map);
+      }
+    }
+  }
+
+  // Deletes all markers in the array by removing references to them
+  Map.deleteOverlays = function() {
+    if (Map.markers) {
+      for (i in Map.markers) {
+        Map.markers[i].setMap(null);
+      }
+      Map.markers.length = 0;
+    }
+  }
+
   window.Map = Map;
 }(window));
