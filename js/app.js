@@ -3,19 +3,9 @@
   var venues = new Array();
   var events = new Array();
   var date = new Date();
-  var map;
-  var spinner;
 
   $(window).ready(function(){
-    //Show the date
-    eventsView.updateDate(Datetime.getDay(date.getDay())+', '+Datetime.getMonth(date.getMonth())+' '+Datetime.getDate(date.getDate()));
-
-    //Add a spinner until concert events are loaded
-    spinner = new Spinner().spin();
-    $('#events').append(spinner.el);
-    $(spinner.el).css("left", "200px").css("top", "200px");
-
-    Map.init(location);
+     Map.init(location);
     initSonic();
   });
 
@@ -76,7 +66,6 @@
   }
 
   function gotEvents(e) {
-    $(spinner.el).remove();
     //console.log(e);
     if (e) {
       var ev = getEventsToday(e);

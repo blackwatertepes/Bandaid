@@ -29,11 +29,19 @@
         <h1 id="title">Bandaid</h1>
         <h2 id="subtitle">Concerts in San Francisco</h2>
       </div>
-      <content>
-        <div id="events"></div>
-        <div id="map_canvas"></div>
-      </content>
+      <content></content>
     </container>
+
+    <script id="eventsTP" type="text/template">
+      <div id="events">
+        <div id='header'>
+          <span id='showing'>Showing concerts for <span id='date'>{{date}}</span></span>
+          <button id='change' class='btn btn-mini'><i class='icon-calendar'></i> Change Date</button>
+        </div>
+      </div>
+      <div id="map_canvas"></div>
+    </script>
+
     <script src="js/backbone/views/EventsView.js"></script>
     <script src="js/app.js"></script>
   </body>
