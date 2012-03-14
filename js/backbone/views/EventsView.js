@@ -1,8 +1,7 @@
 var EventsView = Backbone.View.extend({
-  el: $('body'),
 
   initialize: function() {
-    _.bindAll(this, 'render', 'addItem', 'setLocation');
+    _.bindAll(this, 'render', 'addItem');
 
     this.counter = 0;
     this.render();
@@ -16,7 +15,7 @@ var EventsView = Backbone.View.extend({
     var formattedDate = day + ', ' + month + ' ' + dat;
     var template = $('#eventsTP').html();
     var html = Mustache.to_html(template, {date: formattedDate});
-    $("content", this.el).html(html);
+    $("content").html(html);
 
     this.spinner = new Spinner().spin();
     $('#events').append(this.spinner.el);
@@ -31,14 +30,11 @@ var EventsView = Backbone.View.extend({
     $(this.spinner.el).remove();
     var letter = Alphabet.getLetter(this.counter).toUpperCase();
     var marker = Map.addMarker({latitude: lat, longitude: lon, letter: letter});
-    var template = $('#eventTP').html();
-    var html = Mustache.to_html(template, {letter: letter, time: time, place: place, name: name, event_url: event_url, map_url: map_url})
-    $('#events', this.el).append(html);
-    this.counter++;
-  },
 
-  setLocation: function(location) {
-    $('#location', this.el).text('for ' + location)
+    var event = new EventView({letter: letter, time: time, place: place, name: name, event_url: event_url, map_url: map_url});
+    $("#events").append(event.render());
+
+    this.counter++;
   }
 });
 
