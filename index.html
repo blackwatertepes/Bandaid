@@ -60,7 +60,7 @@
 
     <script id="calendarTP" type="text/template">
       <calendar>
-        <header>March</header>
+        <header>{{month}}</header>
         <table id="cal">
           <thead>
             <tr>
@@ -74,35 +74,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <span class='label'>1</span>
-                <ul>
-                  <li class="artist">Louis Katz</li>
-                  <li class="artist">CHARLES NEVILLE & YOUSSOUPHA SIDEBE @ 8:00PM</li>
-                  <li class="artist">Mary Lou Williams</li>
-                  <li class="artist">Memoryhouse</li>
-                </ul>
-              </td>
-              <td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
           </tbody>
         </table>
       </calendar>
     </script>
 
+    <script src="js/backbone/views/CalendarView.js"></script>
     <script src="js/backbone/views/EventView.js"></script>
     <script src="js/backbone/views/EventsView.js"></script>
     <script src="js/backbone/views/AppView.js"></script>

@@ -1,12 +1,13 @@
+var appView;
+
 (function($){
-  var location = {latitude: 37.760673, longitude: -122.429968};
   var venues = new Array();
   var events = new Array();
   var date = new Date();
 
   $(window).ready(function(){
-    Map.init(location);
-    initSonic();
+    appView = new AppView();
+    //initSonic();
   });
 
   // navigator.geolocation.watchPosition(function(pos){

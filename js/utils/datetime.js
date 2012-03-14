@@ -96,6 +96,27 @@
     return date + ist;
   }
 
+  Datetime.getLength = function(month) {
+    var dates;
+    switch(month) {
+      case 0:
+      case 2:
+      case 4:
+      case 6:
+      case 7:
+      case 9:
+      case 11:
+        dates = 31;
+        break;
+      case 1:
+        dates = 28;
+        break;
+      default:
+        dates = 30;
+    }
+    return dates;
+  }
+
   Datetime.formatDatetime = function(datetime) {
     var date = Datetime.formatDate(datetime.substr(5, 5));
     var time = Datetime.formatTime(datetime.substr(11, 5));

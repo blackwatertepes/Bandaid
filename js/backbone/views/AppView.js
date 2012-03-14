@@ -1,25 +1,26 @@
 var AppView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, 'render');
+    _.bindAll(this, 'render', 'changeDate', 'goHome');
 
-    this.render();
+    this.location = {latitude: 37.760673, longitude: -122.429968};
+
+    this.changeDate();
   },
 
   render: function() {
     this.eventsView = new EventsView();
     $("content").html(this.eventsView.template);
+
+    Map.init(this.location);
   },
 
   changeDate: function() {
-    var template = $('#calendarTP').html();
-    this.calendar_html = Mustache.to_html(template);
-    $("content").html(this.calendar_html);
+    this.calendarView = new CalendarView();
+    $("content").html(this.calendarView.template);
   },
 
   goHome: function() {
     $('content').html(this.eventsView.template);
   }
 });
-
-var appView = new AppView();

@@ -14,7 +14,7 @@ var EventsView = Backbone.View.extend({
     var dat = Datetime.getDate(date.getDate());
     var formattedDate = day + ', ' + month + ' ' + dat;
     var template = $('#eventsTP').html();
-    this.template = $(Mustache.to_html(template, {date: formattedDate}))[0];
+    this.template = $(Mustache.to_html(template, {date: formattedDate}));
 
     this.spinner = new Spinner().spin();
     $('#events', this.template).append(this.spinner.el);
