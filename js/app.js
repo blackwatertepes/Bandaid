@@ -5,7 +5,7 @@
   var date = new Date();
 
   $(window).ready(function(){
-     Map.init(location);
+    Map.init(location);
     initSonic();
   });
 
@@ -126,10 +126,6 @@
       var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
       eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id, v.lat, v.lon);
     });
-  }
-
-  function addImage(id) {
-    eventsView.addImage("http://img.freebase.com/api/trans/raw" + id);
   }
 
   window.showBite = function(marker_id, event_id) {

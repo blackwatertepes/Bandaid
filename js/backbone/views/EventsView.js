@@ -31,16 +31,14 @@ var EventsView = Backbone.View.extend({
     $(this.spinner.el).remove();
     var letter = Alphabet.getLetter(this.counter).toUpperCase();
     var marker = Map.addMarker({latitude: lat, longitude: lon, letter: letter});
-    $('#events', this.el).append("<div class='event'><span class='label'>"+letter+"</span><div class='info'> "+time+"<br/><a href='"+event_url+"'>"+name+"</a><br/><a href='"+map_url+"'>"+place+"</a></div><div class='bitebrew'><a class='bite' onclick='showBite("+marker.__gm_id+", "+event_id+")' href='#'>Get a Bite</a><a class='brew' onclick='showBrew("+marker.__gm_id+", "+event_id+")' href='#'>Get a Brew</a></div></div>");
+    var template = $('#eventTP').html();
+    var html = Mustache.to_html(template, {letter: letter, time: time, place: place, name: name, event_url: event_url, map_url: map_url})
+    $('#events', this.el).append(html);
     this.counter++;
   },
 
   setLocation: function(location) {
     $('#location', this.el).text('for ' + location)
-  },
-
-  addImage: function(url) {
-    $('#images', this.el).append("<img src="+url+"/>");
   }
 });
 
