@@ -14,11 +14,10 @@ var EventsView = Backbone.View.extend({
     var dat = Datetime.getDate(date.getDate());
     var formattedDate = day + ', ' + month + ' ' + dat;
     var template = $('#eventsTP').html();
-    var html = Mustache.to_html(template, {date: formattedDate});
-    $("content").html(html);
+    this.template = $(Mustache.to_html(template, {date: formattedDate}))[0];
 
     this.spinner = new Spinner().spin();
-    $('#events').append(this.spinner.el);
+    $('#events', this.template).append(this.spinner.el);
     $(this.spinner.el).css("left", "200px").css("top", "200px");
   },
 
@@ -32,10 +31,8 @@ var EventsView = Backbone.View.extend({
     var marker = Map.addMarker({latitude: lat, longitude: lon, letter: letter});
 
     var event = new EventView({letter: letter, time: time, place: place, name: name, event_url: event_url, map_url: map_url});
-    $("#events").append(event.render());
+    $("#events", this.template).append(event.template);
 
     this.counter++;
   }
 });
-
-var eventsView = new EventsView();

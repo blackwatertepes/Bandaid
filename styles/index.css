@@ -19,6 +19,11 @@ container {
   margin-bottom: 10px;
 }
 
+#titles a:link, #titles a:hover, #title a:active, #title a:visited {
+  color: #333;
+  text-decoration: none;
+}
+
 #title, #subtitle {
   display: inline;
   margin-right: 20px;

@@ -7,12 +7,18 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
+    this.eventsView = new EventsView();
+    $("content").html(this.eventsView.template);
   },
 
   changeDate: function() {
     var template = $('#calendarTP').html();
-    var html = Mustache.to_html(template);
-    $("content").html(html);
+    this.calendar_html = Mustache.to_html(template);
+    $("content").html(this.calendar_html);
+  },
+
+  goHome: function() {
+    $('content').html(this.eventsView.template);
   }
 });
 
