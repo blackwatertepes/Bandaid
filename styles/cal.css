@@ -1,0 +1,50 @@
+calendar {
+  width: 910px;
+  margin: 0 auto;
+}
+
+calendar header {
+  font-size: 24pt;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+}
+
+#cal {
+  border: 2px solid #666;
+  width: 100%;
+  box-shadow: 3px 3px 5px #000;
+  table-layout: fixed;
+}
+
+#cal th {
+  height: 40px;
+  background: #FFE;
+}
+
+#cal td {
+  width: 130px;
+  height: 80px;
+  border: 1px solid #CCC;
+  font-size: 8pt;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#cal td:hover, #cal td:active {
+  background-color: #EEE;
+}
+
+#cal .label {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+#cal ul {
+  position: relative;
+  top: 3px;
+  list-style: none;
+}
