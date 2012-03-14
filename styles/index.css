@@ -46,6 +46,7 @@ container {
 
 #events #change {
   float: right;
+  display: none;
 }
 
 .event {

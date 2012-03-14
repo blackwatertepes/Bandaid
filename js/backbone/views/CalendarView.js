@@ -8,8 +8,12 @@ var CalendarView = Backbone.View.extend({
   render: function() {
     var date = new Date();
     var month = Datetime.getMonth(date.getMonth());
-    var template = $('#calendarTP').html();
-    this.template = $(Mustache.to_html(template, {month: month}));
+
+    var t = this;
+    $.get('templates/calendar.html', function(template) {
+      t.template = $(Mustache.to_html(template, {month: month}));
+      $("content").html(t.template);
+    });
 
     var col = date.getDay();
     var start = col;

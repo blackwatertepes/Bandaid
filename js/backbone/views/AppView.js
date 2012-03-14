@@ -5,19 +5,23 @@ var AppView = Backbone.View.extend({
 
     this.location = {latitude: 37.760673, longitude: -122.429968};
 
-    this.changeDate();
+    this.render();
   },
 
   render: function() {
-    this.eventsView = new EventsView();
-    $("content").html(this.eventsView.template);
-
-    Map.init(this.location);
+    if (!this.eventsView) {
+      this.eventsView = new EventsView({location: this.location});
+    } else {
+      this.eventsView.render();
+    }
   },
 
   changeDate: function() {
-    this.calendarView = new CalendarView();
-    $("content").html(this.calendarView.template);
+    if (!this.calendarView) {
+      this.calendarView = new CalendarView()
+    } else {
+      this.calendarView.render();
+    }
   },
 
   goHome: function() {

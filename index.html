@@ -33,58 +33,6 @@
       <content></content>
     </container>
 
-    <script id="eventsTP" type="text/template">
-      <div id="eventsView">
-        <div id="events">
-          <div id='header'>
-            <span id='showing'>Showing concerts for <span id='date'>{{date}}</span></span>
-            <button id='change' class='btn btn-mini' onclick='appView.changeDate()'><i class='icon-calendar'></i> Change Date</button>
-          </div>
-        </div>
-        <div id="map_canvas"></div>
-      </div>
-    </script>
-
-    <script id="eventTP" type="text/template">
-      <div class='event'>
-        <span class='label'>{{letter}}</span>
-        <div class='info'>{{time}}<br/>
-          <a href='{{event_url}}'>{{name}}</a><br/>
-          <a href='{{map_url}}'>{{place}}</a></div>
-          <div class='bitebrew'>
-            <a class='bite' onclick='showBite("+marker.__gm_id+", "+event_id+")' href='#'>Get a Bite</a>
-            <a class='brew' onclick='showBrew("+marker.__gm_id+", "+event_id+")' href='#'>Get a Brew</a>
-        </div>
-      </div>
-    </script>
-
-    <script id="calendarTP" type="text/template">
-      <calendar>
-        <header>{{month}}</header>
-        <table id="cal">
-          <thead>
-            <tr>
-              <th>Sunday</th>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
-              <th>Saturday</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          </tbody>
-        </table>
-      </calendar>
-    </script>
-
     <script src="js/backbone/views/CalendarView.js"></script>
     <script src="js/backbone/views/EventView.js"></script>
     <script src="js/backbone/views/EventsView.js"></script>

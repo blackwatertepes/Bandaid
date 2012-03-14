@@ -7,7 +7,7 @@ var appView;
 
   $(window).ready(function(){
     appView = new AppView();
-    //initSonic();
+    window.initSonic();
   });
 
   // navigator.geolocation.watchPosition(function(pos){
@@ -18,7 +18,7 @@ var appView;
   //   }
   // });
 
-  function initSonic() {
+  window.initSonic = function() {
     Sonic.key = 'b3b4c28f';
     //Sonic.getLocationLocate(gotLocation, location.coords);
     Sonic.getVenuesByCity(gotVenues, 27907);
@@ -33,7 +33,7 @@ var appView;
 
   function gotVenues(v) {
     console.log('Total Venues:',v.length);
-    venues = getVenuesByLatLong(v, location);
+    venues = getVenuesByLatLong(v, appView.location);
     console.log('Local Venues',venues.length);
     var a = 0;
     var off = 100;
