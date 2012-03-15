@@ -125,7 +125,17 @@ var appView;
       }
       var place = val.venue_name + ', ' + val.venue_city;
       var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
-      eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id, v.lat, v.lon);
+      eventsView.addItem({time: time, name: val.name, place: place, event_url: val.event_url, map_url: map_url, event_id: val.event_id, lat: v.lat, lon: v.lon});
     });
+  }
+
+  window.getEventById = function(id) {
+    var event;
+    $.each(events, function(key, val){
+      if (val.event_id == id) {
+        event = val;
+      }
+    });
+    return event;
   }
 })(jQuery);

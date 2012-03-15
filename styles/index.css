@@ -34,6 +34,10 @@ container {
   display: inline-block;
 }
 
+#items .list .photo {
+  height: 65px;
+}
+
 #items .list .header {
   width: 100%;
   height: 40px;
@@ -52,7 +56,7 @@ container {
   display: none;
 }
 
-.event {
+#items .item {
   margin-bottom: 10px;
   width: 415px;
   background-color: #eee;
@@ -65,7 +69,7 @@ container {
   -o-transition: border .5s;
 }
 
-.event:hover, .event:active {
+#items .item:hover, #items .item:active {
   transition: border .5s;
   -webkit-transition: border .5s;
   -moz-transition: border .5s;
@@ -73,16 +77,16 @@ container {
   border: 1px solid #999;
 }
 
-.event:hover .bitebrew {
+#items .item:hover .bitebrew {
 }
 
-.event .label {
+#items .item .label {
   vertical-align: top;
+  margin-right: 8px;
 }
 
 .event .info {
   display: inline-block;
-  margin-left: 8px;
   width: 280px;
 }
 
@@ -100,4 +104,14 @@ container {
   vertical-align: top;
   margin-top: 40px;
   margin-left: 20px;
+}
+
+.place .info {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: top;
+}
+
+.place .info .rating {
+  margin-top: 5px;
 }

@@ -46,13 +46,26 @@
     return marker;
   }
 
-  Map.panTo = function(id) {
+  Map.panTo = function(location) {
+    var point = new google.maps.LatLng(location.latitude, location.longitude);
+    try {
+      Map.map.panTo(point);
+    } catch (error) {
+      console.warn("panTo called without map being initialized!");
+    }
+  }
+
+  Map.panToMarker = function(id) {
     marker = Map.getMarkerById(id);
     Map.map.panTo(marker.position);
   }
 
   Map.setZoom = function(n) {
-    Map.map.setZoom(n);
+    try {
+      Map.map.setZoom(n);
+    } catch (error) {
+      console.warn("panTo called without map being initialized!");
+    }
   }
 
   // Removes the overlays from the map, but keeps them in the array
