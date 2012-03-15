@@ -9,18 +9,14 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
-    if (!this.eventsView) {
-      this.eventsView = new EventsView({location: this.location});
-    } else {
-      this.eventsView.render();
-    }
+    this.eventsView = eventsView = new EventsView({location: this.location});
   },
 
   changeDate: function() {
     if (!this.calendarView) {
       this.calendarView = new CalendarView()
     } else {
-      this.calendarView.render();
+      $('content').html(this.calendarView.template);
     }
   },
 
@@ -28,3 +24,5 @@ var AppView = Backbone.View.extend({
     $('content').html(this.eventsView.template);
   }
 });
+
+var eventsView;

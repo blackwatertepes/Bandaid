@@ -29,23 +29,26 @@ container {
   margin-right: 20px;
 }
 
-#events {
+#items .list {
   width: 435px;
   display: inline-block;
 }
 
-#events #header {
+#items .list .header {
   width: 100%;
   height: 40px;
 }
 
-#events #showing {
+#items .list .showing {
   position: relative;
   top: 15px;
 }
 
-#events #change {
+#items .header .btn {
   float: right;
+}
+
+#events .header .btn {
   display: none;
 }
 
@@ -56,10 +59,21 @@ container {
   border-radius: 5px;
   padding: 10px;
   border: 1px solid #eee;
+  transition: border .5s;
+  -webkit-transition: border .5s;
+  -moz-transition: border .5s;
+  -o-transition: border .5s;
 }
 
 .event:hover, .event:active {
+  transition: border .5s;
+  -webkit-transition: border .5s;
+  -moz-transition: border .5s;
+  -o-transition: border .5s;
   border: 1px solid #999;
+}
+
+.event:hover .bitebrew {
 }
 
 .event .label {
@@ -68,11 +82,15 @@ container {
 
 .event .info {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 8px;
+  width: 280px;
 }
 
 .event .bitebrew {
-  display: none;
+  display: inline-block;
+  float: right;
+  text-align: center;
+  color: #666;
 }
 
 #map_canvas {

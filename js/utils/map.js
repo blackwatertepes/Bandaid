@@ -16,17 +16,24 @@
     Map.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 
-  Map.addMarker = function(coords) {
+  Map.addMarker = function(coords, letter, color) {
+    var color = color || 'red';
     var point = new google.maps.LatLng(coords.latitude, coords.longitude);
     var marker = new google.maps.Marker({
       map: Map.map,
       position: point,
       animation: google.maps.Animation.DROP,
-      icon: 'images/markers/red_Marker'+coords.letter+'.png',
+      icon: 'images/markers/'+color+'_Marker'+letter+'.png',
     });
 
     Map.markers.push(marker);
     return marker;
+  }
+
+  Map.removeMarker = function(marker) {
+    var index = Map.markers.indexOf(marker);
+    Map.markers.splice(index, 1);
+    marker.setMap(null);
   }
 
   Map.getMarkerById = function(id) {
@@ -37,6 +44,15 @@
       }
     });
     return marker;
+  }
+
+  Map.panTo = function(id) {
+    marker = Map.getMarkerById(id);
+    Map.map.panTo(marker.position);
+  }
+
+  Map.setZoom = function(n) {
+    Map.map.setZoom(n);
   }
 
   // Removes the overlays from the map, but keeps them in the array

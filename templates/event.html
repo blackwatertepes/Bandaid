@@ -2,9 +2,11 @@
   <span class='label'>{{letter}}</span>
   <div class='info'>{{time}}<br/>
     <a href='{{event_url}}'>{{name}}</a><br/>
-    <a href='{{map_url}}'>{{place}}</a></div>
-    <div class='bitebrew'>
-      <a class='bite' onclick='showBite("+marker.__gm_id+", "+event_id+")' href='#'>Get a Bite</a>
-      <a class='brew' onclick='showBrew("+marker.__gm_id+", "+event_id+")' href='#'>Get a Brew</a>
+    <a href='{{map_url}}'>{{place}}</a>
+  </div>
+  <div class='bitebrew'>
+    <span>Get a...</span><br/>
+    <button class='btn' onclick='eventsView.showBite({{marker_id}})'>Bite</button>
+    <button class='btn' onclick='eventsView.showBrew({{marker_id}})'>Brew</button>
   </div>
 </div>

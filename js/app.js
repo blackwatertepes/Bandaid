@@ -125,15 +125,7 @@ var appView;
       }
       var place = val.venue_name + ', ' + val.venue_city;
       var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
-      appView.eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id, v.lat, v.lon);
+      eventsView.addItem(time, val.name, place, val.event_url, map_url, val.event_id, v.lat, v.lon);
     });
-  }
-
-  window.showBite = function(marker_id, event_id) {
-    console.log(marker_id);
-  }
-
-  window.showBrew = function(id) {
-    console.log(id);
   }
 })(jQuery);
