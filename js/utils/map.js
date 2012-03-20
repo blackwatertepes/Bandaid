@@ -8,16 +8,12 @@
   }
 
   Map.init = function(coords) {
-    try {
-      var myOptions = {
-        zoom: 12,
-        center: new google.maps.LatLng(coords.latitude, coords.longitude),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
-      Map.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    } catch (error) {
-      console.warn("Map.init()::Failure");
+    var myOptions = {
+      zoom: 12,
+      center: new google.maps.LatLng(coords.latitude, coords.longitude),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     }
+    Map.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 
   Map.addMarker = function(coords, letter, color) {

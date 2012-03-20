@@ -24,7 +24,12 @@ var EventsView = Backbone.View.extend({
       $('#events', t.template).append(t.spinner.el);
       $(t.spinner.el).css("left", "200px").css("top", "200px");
 
-      Map.init(t.options.location);
+      try {
+        Map.init(t.options.location);
+      } catch (error) {
+        console.warn("Map.init()::Failure");
+
+      }
       t.showEvents();
     });
 
