@@ -8,56 +8,80 @@
   }
 
   Map.init = function(coords) {
-    var myOptions = {
-      zoom: 12,
-      center: new google.maps.LatLng(coords.latitude, coords.longitude),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+    try {
+      var myOptions = {
+        zoom: 12,
+        center: new google.maps.LatLng(coords.latitude, coords.longitude),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      Map.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    } catch (error) {
+      console.warn("Map.init()::Failure");
     }
-    Map.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 
   Map.addMarker = function(coords, letter, color) {
-    var color = color || 'red';
-    var point = new google.maps.LatLng(coords.latitude, coords.longitude);
-    var marker = new google.maps.Marker({
-      map: Map.map,
-      position: point,
-      animation: google.maps.Animation.DROP,
-      icon: 'images/markers/'+color+'_Marker'+letter+'.png',
-    });
+    try {
+      var color = color || 'red';
+      var point = new google.maps.LatLng(coords.latitude, coords.longitude);
+      var marker = new google.maps.Marker({
+        map: Map.map,
+        position: point,
+        animation: google.maps.Animation.DROP,
+        icon: 'images/markers/'+color+'_Marker'+letter+'.png',
+      });
 
-    Map.markers.push(marker);
-    return marker;
+      Map.markers.push(marker);
+      return marker;
+    } catch (error) {
+      console.warn("Map.addMarker()::Failure");
+    }
   }
 
   Map.removeMarker = function(marker) {
-    var index = Map.markers.indexOf(marker);
-    Map.markers.splice(index, 1);
-    marker.setMap(null);
+    try {
+      var index = Map.markers.indexOf(marker);
+      Map.markers.splice(index, 1);
+      marker.setMap(null);
+    } catch (error) {
+      console.warn("Map.removeMarker()::Failure");
+    }
   }
 
   Map.getMarkerById = function(id) {
-    var marker;
-    $.each(Map.markers, function(key, val){
-      if (val.__gm_id == id) {
-        marker = val;
-      }
-    });
-    return marker;
+    try {
+      var marker;
+      $.each(Map.markers, function(key, val){
+        if (val.__gm_id == id) {
+          marker = val;
+        }
+      });
+      return marker;
+    } catch (error) {
+      console.warn("Map.getMarkerById()::Failure");
+    }
   }
 
   Map.panTo = function(location) {
-    var point = new google.maps.LatLng(location.latitude, location.longitude);
     try {
-      Map.map.panTo(point);
+      var point = new google.maps.LatLng(location.latitude, location.longitude);
+      try {
+        Map.map.panTo(point);
+      } catch (error) {
+        console.warn("panTo called without map being initialized!");
+      }
     } catch (error) {
-      console.warn("panTo called without map being initialized!");
+      console.warn("Map.panTo()::Failure");
     }
   }
 
   Map.panToMarker = function(id) {
-    marker = Map.getMarkerById(id);
-    Map.map.panTo(marker.position);
+    try {
+      marker = Map.getMarkerById(id);
+      Map.map.panTo(marker.position);
+    } catch (error) {
+      console.warn("Map.panToMarker()::Failure");
+    }
   }
 
   Map.setZoom = function(n) {

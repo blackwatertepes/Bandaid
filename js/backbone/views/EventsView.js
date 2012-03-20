@@ -24,9 +24,8 @@ var EventsView = Backbone.View.extend({
       $('#events', t.template).append(t.spinner.el);
       $(t.spinner.el).css("left", "200px").css("top", "200px");
 
-      t.showEvents();
-
       Map.init(t.options.location);
+      t.showEvents();
     });
 
     $.get('templates/event.html?c='+Math.random(), function(template) {

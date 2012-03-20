@@ -7,7 +7,7 @@ var appView;
 
   $(window).ready(function(){
     appView = new AppView();
-    window.initSonic();
+    //window.initSonic();
   });
 
   // navigator.geolocation.watchPosition(function(pos){
