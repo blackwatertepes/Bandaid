@@ -1,5 +1,5 @@
 var PlaceModel = Backbone.Model.extend({
-  defaults: function() {
+  defaults: {
     letter: '',
     name: '',
     street: '',

@@ -1,5 +1,5 @@
 var EventModel = Backbone.Model.extend({
-  defaults: function() {
+  defaults: {
     letter: '',
     time: '',
     date: '',
