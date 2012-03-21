@@ -1,8 +1,6 @@
 var appView;
 
 (function($){
-  var venues = new Array();
-  var events = new Array();
   var date = new Date();
 
   $(window).ready(function(){
@@ -33,12 +31,12 @@ var appView;
 
   function gotVenues(v) {
     console.log('Total Venues:',v.length);
-    venues = getVenuesByLatLong(v, appView.location);
-    console.log('Local Venues',venues.length);
+    appView.venues = getVenuesByLatLong(v, appView.location);
+    console.log('Local Venues', appView.venues.length);
     var a = 0;
     var off = 100;
-    while(a < venues.length) {
-      Sonic.getEventsByVenues(gotEvents, venues.slice(a, a + off));
+    while(a < appView.venues.length) {
+      Sonic.getEventsByVenues(gotEvents, appView.venues.slice(a, a + off));
       a += off;
     }
   }
@@ -56,23 +54,13 @@ var appView;
     return set;
   }
 
-  function getVenueByID(id) {
-    var v;
-    $.each(venues, function(key, val) {
-      if (val.master_venue_id == id) {
-        v = val;
-      }
-    });
-    return v;
-  }
-
   function gotEvents(e) {
     //console.log(e);
     if (e) {
       var ev = getEventsToday(e);
       if (ev) {
         if (ev.length > 0) {
-          addEvents(ev);
+          appView.addEvents(ev);
           //Sonic.getEvents(gotEventsDetailed, ev);
         }
       }
@@ -112,30 +100,5 @@ var appView;
       }
     });
     return ev;
-  }
-
-  function addEvents(e) {
-    $.each(e, function(key, val) {
-      events.push(val);
-      var v = getVenueByID(val.venue_id);
-      var time = Datetime.formatDatetime(val.start_datetime);
-      if (val.start_datetime.substr(11, 2) == '00' && val.name.match(/\d{1,2}:\d{0,2} ?[aApP][mM]/)) {
-        var hour = val.name.match(/\d{1,2}:\d{0,2} ?[aApP][mM]/)[0].replace(' ', '');
-        time = time.replace('00:00am', hour.toLowerCase());
-      }
-      var place = val.venue_name + ', ' + val.venue_city;
-      var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
-      eventsView.addItem({time: time, name: val.name, place: place, event_url: val.event_url, map_url: map_url, event_id: val.event_id, lat: v.lat, lon: v.lon});
-    });
-  }
-
-  window.getEventById = function(id) {
-    var event;
-    $.each(events, function(key, val){
-      if (val.event_id == id) {
-        event = val;
-      }
-    });
-    return event;
   }
 })(jQuery);
