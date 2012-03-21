@@ -46,6 +46,14 @@ var EventsView = Backbone.View.extend({
     $('#events .showing .date').text(day + ', ' + month + ' ' + date);
   },
 
+  showEventsSpinner: function() {
+    $('#events', this.template).append(this.spinner.el);
+  },
+
+  showPlacesSpinner: function() {
+    $('#places', this.template).append(this.spinner.el);
+  },
+
   addItem: function(o) {
     $(this.spinner.el).remove();
     var letter = Alphabet.getLetter(this.counter).toUpperCase();
@@ -57,6 +65,7 @@ var EventsView = Backbone.View.extend({
   },
 
   addPlace: function(o) {
+    $(this.spinner.el).remove();
     var letter = Alphabet.getLetter(this.counter).toUpperCase();
     var place = new PlaceView({template: this.place_template, letter: letter, name: o.name, address: o.address, rating_img: o.rating_img, photo_img: o.photo_img, map_url: o.map_url, place_url: o.place_url});
 
@@ -87,6 +96,7 @@ var EventsView = Backbone.View.extend({
   },
 
   showPlaces: function(marker_id, event_id, category, term) {
+    this.showPlacesSpinner();
     this.clearPlaces();
     $('#events').hide();
     $('#places .term').html(category);
