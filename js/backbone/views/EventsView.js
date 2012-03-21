@@ -132,6 +132,7 @@ var EventsView = Backbone.View.extend({
       Map.removeMarker(val);
     });
     this.event_markers = [];
+    this.counter = 0;
     $('#events .event').remove();
   },
 

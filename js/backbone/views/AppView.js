@@ -18,6 +18,15 @@ var AppView = Backbone.View.extend({
   showEvents: function(month, date) {
     $('content').html(this.eventsView.template);
     this.addEvents(getEventsByDate(month, date));
+
+    var d = new Date();
+    d.setMonth(month);
+    d.setDate(date);
+    var day = Datetime.getDay(d.getDay());
+    var month = Datetime.getMonth(d.getMonth());
+    var dat = Datetime.getDate(d.getDate());
+
+    eventsView.updateDate(day, month, dat);
   },
 
   showCal: function() {
