@@ -5,10 +5,10 @@ var EventsView = Backbone.View.extend({
 
     this.place_markers = new Array();
     this.counter = 0;
-    this.render();
+    this.import();
   },
 
-  render: function() {
+  import: function() {
     var date = new Date();
     var day = Datetime.getDay(date.getDay());
     var month = Datetime.getMonth(date.getMonth());
@@ -20,17 +20,7 @@ var EventsView = Backbone.View.extend({
       t.template = $(Mustache.to_html(template, {date: formattedDate}));
       $("content").html(t.template);
 
-      t.spinner = new Spinner().spin();
-      $('#events', t.template).append(t.spinner.el);
-      $(t.spinner.el).css("left", "200px").css("top", "200px");
-
-      try {
-        Map.init(t.options.location);
-      } catch (error) {
-        console.warn("Map.init()::Failure");
-
-      }
-      t.showEvents();
+      t.render();
     });
 
     $.get('templates/event.html?c='+Math.random(), function(template) {
@@ -40,6 +30,20 @@ var EventsView = Backbone.View.extend({
     $.get('templates/place.html?c='+Math.random(), function(template) {
       t.place_template = template;
     });
+  },
+
+  render: function() {
+    this.spinner = new Spinner().spin();
+    $('#events', this.template).append(this.spinner.el);
+    $(this.spinner.el).css("left", "200px").css("top", "200px");
+
+    try {
+      Map.init(this.options.location);
+    } catch (error) {
+      console.warn("Map.init()::Failure");
+
+    }
+    this.showEvents();
   },
 
   updateDate: function(day, month, date) {
