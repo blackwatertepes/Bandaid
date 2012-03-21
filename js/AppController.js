@@ -57,6 +57,7 @@ var appView;
   function gotEvents(e) {
     //console.log(e);
     if (e) {
+      appView.addCalendarEvents(e);
       var ev = getEventsToday(e);
       if (ev) {
         if (ev.length > 0) {
