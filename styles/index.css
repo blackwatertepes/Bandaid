@@ -52,10 +52,6 @@ container {
   float: right;
 }
 
-#events .header .btn {
-  display: none;
-}
-
 #items .item {
   margin-bottom: 10px;
   width: 415px;
