@@ -12,17 +12,20 @@
     throw ("Yelp cannot be instantiated.");
   }
 
-  Yelp.getPlaces = function(callback, category, term, lat, long) {
-    var url = 'http://api.yelp.com/business_review_search?category='+category+'&term='+term+'&lat='+lat+'&long='+long+'&radius=0.2&limit=5&ywsid=jdFMj4VwdGp5lK9D94Z6tA';
+  Yelp.getPlaces = function(callback, category, term, lat, lon) {
+    var url = 'yelp.php?term='+term+'&cat='+category+'&lat='+lat+'&lon='+lon+'&rad=320&lim=5';
 
     console.log('Yelp::request', url);
 
     $.ajax({
       url: url,
-      dataType: 'jsonp',
+      dataType: 'json',
       success: function(res) {
-        console.log('Yelp::response',res.message.text, res);
+        console.log('Yelp::response',res);
         if (callback) callback(res.businesses);
+      },
+      error: function(res) {
+        console.error('Yelp::response',res);
       }
     });
   }

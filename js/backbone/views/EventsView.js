@@ -102,10 +102,11 @@ var EventsView = Backbone.View.extend({
     this.counter = 0;
     $.each(places, function(key, val){
       var letter = Alphabet.getLetter(key).toUpperCase();
-      var marker = Map.addMarker({latitude: val.latitude, longitude: val.longitude}, letter, 'blue');
+      var coords = val.location.coordinate;
+      var marker = Map.addMarker({latitude: coords.latitude, longitude: coords.longitude}, letter, 'blue');
       t.place_markers.push(marker);
-      var map_url = "http://maps.google.com/maps?q="+val.address1+", "+val.city+", "+val.state;
-      t.addPlace({name: val.name, address: val.address1, rating_img: val.rating_img_url, photo_img: val.photo_url, map_url: map_url, place_url: val.url});
+      var map_url = "http://maps.google.com/maps?q="+val.location.address+", "+val.location.city+", "+val.location.state_code;
+      t.addPlace({name: val.name, address: val.location.address, rating_img: val.rating_img_url, photo_img: val.image_url, map_url: map_url, place_url: val.url});
     });
   },
 

@@ -1,5 +1,4 @@
 <?php
-
 //
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 //
@@ -8,7 +7,7 @@
 require_once ('../lib/OAuth.php');
 
 // For example, request business with id 'the-waterboy-sacramento'
-$unsigned_url = "http://api.yelp.com/v2/search?ll=".$_GET['lat'].",".$_GET['lon']."&limit=".$_GET['lim']."&category_filter=".$_GET['cat']."&radius_filter=".$_GET['rad'];
+$unsigned_url = "http://api.yelp.com/v2/search?ll=".$_GET['lat'].",".$_GET['lon']."&limit=".$_GET['lim']."&category_filter=".$_GET['cat']."&radius_filter=".$_GET['rad']."&term=".$_GET['term'];
 
 // For examaple, search for 'tacos' in 'sf'
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
@@ -47,6 +46,7 @@ curl_close($ch);
 
 // Handle Yelp response data
 $response = json_decode($data);
+$response = json_encode($response);
 
 // Print it for debugging
 print_r($response);
