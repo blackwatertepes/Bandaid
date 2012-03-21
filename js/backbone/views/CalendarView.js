@@ -42,7 +42,7 @@ var CalendarView = Backbone.View.extend({
             cell.append("<ul id="+month+"_"+dat+"></ul>");
           } else {
             cell.append("<span class='label'>"+(dat-monthLength)+"</span>");
-            cell.append("<ul id="+(month+1)+"_"+(dat-monthLength)+"></ul>");
+            cell.append("<ul id="+(month+1)+"_"+(dat-monthLength)+" class='next-month'></ul>");
           }
         }
       });

@@ -24,7 +24,7 @@ calendar header {
 
 #cal td {
   width: 130px;
-  height: 80px;
+  height: 30px;
   border: 1px solid #CCC;
   font-size: 8pt;
   position: relative;
@@ -34,7 +34,7 @@ calendar header {
 }
 
 #cal td:hover, #cal td:active {
-  background-color: #EEE;
+  background-color: #F1F1F1;
 }
 
 #cal .label {
@@ -47,4 +47,8 @@ calendar header {
   position: relative;
   top: 3px;
   list-style: none;
+}
+
+#cal .next-month {
+  color: #666;
 }
