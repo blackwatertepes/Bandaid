@@ -1,7 +1,7 @@
 var AppView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, 'render', 'changeDate', 'goHome');
+    _.bindAll(this, 'render', 'showCal', 'goHome');
 
     this.location = {latitude: 37.760673, longitude: -122.429968};
     this.events = new Array();
@@ -11,11 +11,16 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
-    this.eventsView = new EventsView({location: this.location});
+    this.eventsView = eventsView = new EventsView({location: this.location});
     this.calendarView = new CalendarView();
   },
 
-  changeDate: function() {
+  showEvents: function(month, date) {
+    $('content').html(this.eventsView.template);
+    this.addEvents(getEventsByDate(month, date));
+  },
+
+  showCal: function() {
     $('content').html(this.calendarView.template);
   },
 
@@ -24,6 +29,8 @@ var AppView = Backbone.View.extend({
   },
 
   addEvents: function(e) {
+    eventsView.clearEvents();
+
     var t = this;
     $.each(e, function(key, val) {
       t.addEvent(val);
@@ -40,12 +47,10 @@ var AppView = Backbone.View.extend({
     }
     var place = val.venue_name + ', ' + val.venue_city;
     var map_url = "http://maps.google.com/maps?q="+v.address+", "+v.venue_city+", "+v.venue_state;
-    this.eventsView.addItem({time: time, name: val.name, place: place, event_url: val.event_url, map_url: map_url, event_id: val.event_id, lat: v.lat, lon: v.lon});
+    this.eventsView.addEvent({time: time, name: val.name, place: place, event_url: val.event_url, map_url: map_url, event_id: val.event_id, lat: v.lat, lon: v.lon});
   },
 
   addCalendarEvents: function(e) {
-    //TEST
-    this.changeDate();
     var t = this;
     $.each(e, function(key, val) {
       t.calendarView.addEvent(val);

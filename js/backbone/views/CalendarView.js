@@ -14,7 +14,7 @@ var CalendarView = Backbone.View.extend({
     var t = this;
     $.get('templates/calendar.html', function(template) {
       t.template = $(Mustache.to_html(template, {month: t.month}));
-      $("content").html(t.template);
+      //$("content").html(t.template);
 
       t.render();
     });
@@ -44,24 +44,26 @@ var CalendarView = Backbone.View.extend({
           if (dat <= monthLength) {
             cell.append("<span class='label label-info'>"+dat+"</span>");
             cell.append("<ul id="+month+"_"+dat+"></ul>");
+            cell.attr("onclick", "appView.showEvents("+(month-1)+", "+dat+")");
             if (dat == t.day) row = rowIndex;
           } else {
             cell.append("<span class='label'>"+(dat-monthLength)+"</span>");
             cell.append("<ul id="+(month+1)+"_"+(dat-monthLength)+" class='next-month'></ul>");
+            cell.attr("onclick", "appView.showEvents("+month+", "+(dat-monthLength)+")");
           }
         }
       });
     });
 
-    $('tr:nth-child('+row+') td:nth-child('+col+')').css('background-color', '#FEE');
+    $('tr:nth-child('+row+') td:nth-child('+col+')', this.template).css('background-color', '#FEE');
   },
 
   addEvent: function(event) {
     var year = parseInt(event.start_datetime.substr(0, 4));
     var month = parseInt(event.start_datetime.substr(5, 2));
     var day = parseInt(event.start_datetime.substr(8, 2));
-    if ($('ul#'+month+'_'+day).children().length < 5) {
-      $('ul#'+month+'_'+day).append('<li>'+event.name+'</li>');
+    if ($('ul#'+month+'_'+day, this.template).children().length < 5) {
+      $('ul#'+month+'_'+day, this.template).append('<li>'+event.name+'</li>');
     }
   }
 });

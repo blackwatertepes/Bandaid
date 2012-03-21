@@ -2,6 +2,7 @@ var appView;
 
 (function($){
   var date = new Date();
+  var events = new Array();
 
   $(window).ready(function(){
     appView = new AppView();
@@ -56,9 +57,10 @@ var appView;
 
   function gotEvents(e) {
     //console.log(e);
+    events = e;
     if (e) {
       appView.addCalendarEvents(e);
-      var ev = getEventsToday(e);
+      var ev = getEventsByDate(date.getMonth(), date.getDate());
       if (ev) {
         if (ev.length > 0) {
           appView.addEvents(ev);
@@ -86,16 +88,13 @@ var appView;
     }
   }
 
-  function getEventsToday(e) {
-    //e.start_datetime = 2012-05-06 17:00:00
+  window.getEventsByDate = function(month, day) {
     var ev = new Array();
-    $.each(e, function(key, val){
-      var d = val.start_datetime.substr(8, 2);
-      if (d[0] == 0) d = d[1];
-      var m = val.start_datetime.substr(5, 2);
-      if (m[0] == 0) m = m[1];
-      if (m == date.getMonth()+1) {
-        if (d == date.getDate()) {
+    $.each(events, function(key, val){
+      var d = parseInt(val.start_datetime.substr(8, 2));
+      var m = parseInt(val.start_datetime.substr(5, 2));
+      if (m == (month+1)) {
+        if (d == day) {
           ev.push(val);
         }
       }
