@@ -34,9 +34,16 @@ var CalendarView = Backbone.View.extend({
         var cell = $(colValue);
         var cellIndex = (rowIndex-1) * 7 + (colIndex);
         var dat = cellIndex - t.start + 1;
-        if (dat > 0 && dat <= Datetime.getLength(t.date.getMonth())) {
-          cell.append("<span class='label'>"+dat+"</span>");
-          cell.append("<ul id="+dat+"></ul>");
+        if (dat > 0) {
+          var monthLength = Datetime.getLength(t.date.getMonth());
+          var month = t.date.getMonth() + 1;
+          if (dat <= monthLength) {
+            cell.append("<span class='label label-info'>"+dat+"</span>");
+            cell.append("<ul id="+month+"_"+dat+"></ul>");
+          } else {
+            cell.append("<span class='label'>"+(dat-monthLength)+"</span>");
+            cell.append("<ul id="+(month+1)+"_"+(dat-monthLength)+"></ul>");
+          }
         }
       });
     });
@@ -46,10 +53,8 @@ var CalendarView = Backbone.View.extend({
     var year = parseInt(event.start_datetime.substr(0, 4));
     var month = parseInt(event.start_datetime.substr(5, 2));
     var day = parseInt(event.start_datetime.substr(8, 2));
-    if (month == this.date.getMonth()+1) {
-      if ($('ul#'+day).children().length < 5) {
-        $('ul#'+day).append('<li>'+event.name+'</li>');
-      }
+    if ($('ul#'+month+'_'+day).children().length < 5) {
+      $('ul#'+month+'_'+day).append('<li>'+event.name+'</li>');
     }
   }
 });
