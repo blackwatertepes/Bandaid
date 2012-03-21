@@ -34,7 +34,7 @@ var CalendarView = Backbone.View.extend({
       $.each($('td',rowValue), function(colIndex, colValue) {
         var cell = $(colValue);
         var cellIndex = (rowIndex-1) * 7 + (colIndex);
-        var dat = cellIndex - t.start + 1;
+        var dat = cellIndex - t.start;
         if (dat > 0) {
           var monthLength = Datetime.getLength(t.date.getMonth());
           var month = t.date.getMonth() + 1;
@@ -55,7 +55,7 @@ var CalendarView = Backbone.View.extend({
       });
     });
 
-    $('tr:nth-child('+row+') td:nth-child('+col+')', this.template).css('background-color', '#FEE');
+    $('tr:nth-child('+row+') td:nth-child('+(col+1)+')', this.template).css('background-color', '#FEE');
   },
 
   addEvent: function(event) {
