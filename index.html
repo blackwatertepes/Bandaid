@@ -26,7 +26,6 @@
     <script src="js/utils/yelp.js"></script>
 
     <script type="text/javascript">
-
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-30192138-1']);
       _gaq.push(['_trackPageview']);
@@ -36,17 +35,24 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-
     </script>
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=204123649694127";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <container>
       <div id="titles">
         <h1 id="title"><a href='#' onclick='appView.goHome()'>Bandaid</a></h1>
         <h2 id="subtitle">Concerts in San Francisco</h2>
       </div>
       <content></content>
-    </container>
 
     <script src="js/backbone/collections/EventsList.js"></script>
     <script src="js/backbone/collections/PlacesList.js"></script>
