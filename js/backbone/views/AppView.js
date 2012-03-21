@@ -8,7 +8,6 @@ var AppView = Backbone.View.extend({
     this.venues = new Array();
 
     this.render();
-    //this.changeDate();
   },
 
   render: function() {
@@ -28,6 +27,8 @@ var AppView = Backbone.View.extend({
   },
 
   addEvents: function(e) {
+    //TEST
+    this.changeDate();
     var t = this;
     $.each(e, function(key, val) {
       t.addEvent(val);

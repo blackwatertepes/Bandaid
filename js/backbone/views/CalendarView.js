@@ -2,34 +2,37 @@ var CalendarView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render');
 
-    this.render();
+    this.date = new Date();
+    this.month = Datetime.getMonth(this.date.getMonth());
+
+    this.import();
+  },
+
+  import: function() {
+    var t = this;
+    $.get('templates/calendar.html', function(template) {
+      t.template = $(Mustache.to_html(template, {month: this.month}));
+      $("content").html(t.template);
+
+      t.render();
+    });
   },
 
   render: function() {
-    var date = new Date();
-    var month = Datetime.getMonth(date.getMonth());
-
-    var t = this;
-    $.get('templates/calendar.html', function(template) {
-      t.template = $(Mustache.to_html(template, {month: month}));
-      $("content").html(t.template);
-    });
-
-    var col = date.getDay();
+    var col = this.date.getDay();
     var start = col;
-    _.times(date.getDate()-1, function(n) {
+    _.times(this.date.getDate()-1, function(n) {
       start -= 1;
       if (start < 0) start = 6;
     });
-    //var row = Math.ceil((date.getDate() - col - 1) / 7);
-    //$('tr:nth-child('+(row+1)+') td:nth-child('+(col+1)+')', this.template).css('background', '#FEE');
+
+    var t = this;
     $.each($('tr', this.template), function(rowIndex, rowValue) {
       $.each($('td',rowValue), function(colIndex, colValue) {
         var cell = $(colValue);
         var cellIndex = (rowIndex-1) * 7 + (colIndex);
         var dat = cellIndex - start + 1;
-        console.log(Datetime.getLength(date.getMonth()));
-        if (dat > 0 && dat <= Datetime.getLength(date.getMonth())) {
+        if (dat > 0 && dat <= Datetime.getLength(t.date.getMonth())) {
           cell.append("<span class='label'>"+dat+"</span>")
         }
       });
