@@ -66,6 +66,10 @@ var AppView = Backbone.View.extend({
     });
   },
 
+  highlightMarker: function(id) {
+    Map.highlightMarker(id);
+  },
+
   getEventById: function(id) {
     var event;
     $.each(this.events, function(key, val){

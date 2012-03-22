@@ -44,6 +44,18 @@
     }
   }
 
+  Map.highlightMarker = function(id) {
+    Map.resetMarkers();
+    marker = Map.getMarkerById(id);
+    marker.setIcon(marker.icon.replace('red', 'yellow'));
+  }
+
+  Map.resetMarkers = function() {
+    $.each(Map.markers, function(key, val){
+      val.setIcon(val.icon.replace('yellow', 'red'));
+    });
+  }
+
   Map.getMarkerById = function(id) {
     try {
       var marker;
