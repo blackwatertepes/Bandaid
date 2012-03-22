@@ -57,10 +57,10 @@ var appView;
 
   function gotEvents(e) {
     //console.log(e);
-    events = e;
+    events = events.concat(e);
     if (e) {
       appView.addCalendarEvents(e);
-      var ev = getEventsByDate(date.getMonth(), date.getDate());
+      var ev = getEventsByDate(date.getMonth(), date.getDate(), e);
       if (ev) {
         if (ev.length > 0) {
           appView.addEvents(ev);
@@ -88,9 +88,10 @@ var appView;
     }
   }
 
-  window.getEventsByDate = function(month, day) {
+  window.getEventsByDate = function(month, day, e) {
     var ev = new Array();
-    $.each(events, function(key, val){
+    var eve = e || events;
+    $.each(eve, function(key, val){
       var d = parseInt(val.start_datetime.substr(8, 2));
       var m = parseInt(val.start_datetime.substr(5, 2));
       if (m == (month+1)) {

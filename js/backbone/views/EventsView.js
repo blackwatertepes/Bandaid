@@ -61,12 +61,16 @@ var EventsView = Backbone.View.extend({
 
   addEvent: function(o) {
     console.log('ADD EVENT');
-    $(this.spinner.el).remove();
-    var letter = Alphabet.getLetter(this.counter).toUpperCase();
-    var marker = Map.addMarker({latitude: o.lat, longitude: o.lon}, letter);
-    this.event_markers.push(marker);
+    if (this.counter < 26) {
+      $(this.spinner.el).remove();
+      var letter = Alphabet.getLetter(this.counter).toUpperCase();
+      var marker = Map.addMarker({latitude: o.lat, longitude: o.lon}, letter);
+      this.event_markers.push(marker);
 
-    var event = new EventView({template: this.event_template, letter: letter, time: o.time, place: o.place, name: o.name, event_url: o.event_url, map_url: o.map_url, marker_id: marker.__gm_id, event_id: o.event_id});
+      var event = new EventView({template: this.event_template, letter: letter, time: o.time, place: o.place, name: o.name, event_url: o.event_url, map_url: o.map_url, marker_id: marker.__gm_id, event_id: o.event_id});
+    } else {
+      console.warn('EVENT NOT ADDED')
+    }
 
     this.counter++;
   },
