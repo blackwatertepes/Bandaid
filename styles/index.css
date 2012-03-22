@@ -112,3 +112,9 @@ container {
 .place .info .rating {
   margin-top: 5px;
 }
+
+#fb-like {
+  position: absolute;
+  left: 480px;
+  top: 600px;
+}
