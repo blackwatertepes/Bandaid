@@ -103,6 +103,7 @@ container {
   margin-top: 40px;
   margin-left: 20px;
   background-color: #eee;
+  position: fixed !important;
 }
 
 .place .info {
@@ -121,11 +122,6 @@ container {
   top: 16px;
 }
 
-footer {
-  text-align: center;
-  margin-top: 80px;
-}
-
 footer span {
   display: block;
 }
@@ -136,5 +132,5 @@ footer #yelp img {
 }
 
 footer #copy {
-  margin-top: 20px;
+  margin-top: 10px;
 }
