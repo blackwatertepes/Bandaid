@@ -118,3 +118,21 @@ container {
   left: 480px;
   top: 600px;
 }
+
+footer {
+  text-align: center;
+  margin-top: 80px;
+}
+
+footer span {
+  display: block;
+}
+
+footer #yelp img {
+  position: relative;
+  top: 6px;
+}
+
+footer #copy {
+  margin-top: 20px;
+}
