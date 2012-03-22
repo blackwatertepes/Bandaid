@@ -17,6 +17,7 @@ var AppView = Backbone.View.extend({
 
   showEvents: function(month, date) {
     $('content').html(this.eventsView.template);
+    eventsView.clearEvents();
     this.addEvents(getEventsByDate(month, date));
 
     var d = new Date();
@@ -37,10 +38,7 @@ var AppView = Backbone.View.extend({
     $('content').html(this.eventsView.template);
   },
 
-  addEvents: function(e) {
-    eventsView.clearEvents();
-
-    var t = this;
+  addEvents: function(e) {var t = this;
     $.each(e, function(key, val) {
       t.addEvent(val);
     });

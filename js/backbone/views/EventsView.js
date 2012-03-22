@@ -60,6 +60,7 @@ var EventsView = Backbone.View.extend({
   },
 
   addEvent: function(o) {
+    console.log('ADD EVENT');
     $(this.spinner.el).remove();
     var letter = Alphabet.getLetter(this.counter).toUpperCase();
     var marker = Map.addMarker({latitude: o.lat, longitude: o.lon}, letter);
@@ -128,6 +129,7 @@ var EventsView = Backbone.View.extend({
   },
 
   clearEvents: function() {
+    console.log('CLEAR EVENTS');
     $.each(this.event_markers, function(key, val){
       Map.removeMarker(val);
     });
