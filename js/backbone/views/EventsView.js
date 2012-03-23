@@ -79,7 +79,7 @@ var EventsView = Backbone.View.extend({
     $(this.spinner.el).remove();
     var letter = Alphabet.getLetter(this.counter).toUpperCase();
 
-    var place = new PlaceView({template: this.place_template, letter: letter, name: o.name, address: o.address, rating_img: o.rating_img, photo_img: o.photo_img, map_url: o.map_url, place_url: o.place_url});
+    var place = new PlaceView({template: this.place_template, letter: letter, name: o.name, address: o.address, rating_img: o.rating_img, photo_img: o.photo_img, map_url: o.map_url, place_url: o.place_url, review_count: o.review_count});
 
     this.counter++;
   },
@@ -128,7 +128,7 @@ var EventsView = Backbone.View.extend({
       var marker = Map.addMarker({latitude: coords.latitude, longitude: coords.longitude}, letter, 'blue');
       t.place_markers.push(marker);
       var map_url = "http://maps.google.com/maps?q="+val.location.address+", "+val.location.city+", "+val.location.state_code;
-      t.addPlace({name: val.name, address: val.location.address, rating_img: val.rating_img_url, photo_img: val.image_url, map_url: map_url, place_url: val.url});
+      t.addPlace({name: val.name, address: val.location.address, rating_img: val.rating_img_url, photo_img: val.image_url, map_url: map_url, place_url: val.url, review_count: val.review_count});
     });
   },
 

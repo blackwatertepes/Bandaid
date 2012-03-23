@@ -116,6 +116,12 @@ container {
   margin-top: 5px;
 }
 
+.place .review_count {
+  position: relative;
+  top: -5px;
+  color: #666;
+}
+
 #fb-like {
   position: absolute;
   left: 480px;
