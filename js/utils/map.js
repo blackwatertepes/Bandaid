@@ -25,6 +25,7 @@
         position: point,
         animation: google.maps.Animation.DROP,
         icon: 'images/markers/'+color+'_Marker'+letter+'.png',
+        zindex: Map.markers.length-1,
       });
 
       Map.markers.push(marker);
@@ -48,11 +49,13 @@
     Map.resetMarkers();
     marker = Map.getMarkerById(id);
     marker.setIcon(marker.icon.replace('red', 'yellow'));
+    marker.setZIndex(Map.markers.length);
   }
 
   Map.resetMarkers = function() {
     $.each(Map.markers, function(key, val){
       val.setIcon(val.icon.replace('yellow', 'red'));
+      val.setZIndex(key);
     });
   }
 
