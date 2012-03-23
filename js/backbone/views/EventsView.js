@@ -103,6 +103,7 @@ var EventsView = Backbone.View.extend({
     this.clearPlaces();
     $('#places').hide();
     $('#events').show();
+    Map.showOverlays();
     Map.panTo(this.options.location);
     Map.setZoom(12);
   },
@@ -116,6 +117,8 @@ var EventsView = Backbone.View.extend({
     $('#places .venue').html(event.venue_name);
     $('#places').show();
     var marker = Map.getMarkerById(marker_id);
+    Map.clearOverlays();
+    Map.showOverlay(marker);
     var places = Yelp.getPlaces(this.gotPlaces, category, term, marker.position.Ua, marker.position.Va);
   },
 

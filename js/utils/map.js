@@ -109,6 +109,10 @@
     }
   }
 
+  Map.showOverlay = function(marker) {
+    marker.setMap(Map.map);
+  }
+
   // Shows any overlays currently in the array
   Map.showOverlays = function() {
     if (Map.markers) {
