@@ -24,12 +24,12 @@ var CalendarView = Backbone.View.extend({
     var col = this.date.getDay();
     var row = 0;
     this.start = col;
-    _.times(this.date.getDate(), function(n) {
-      this.start -= 1;
-      if (this.start < 0) this.start = 6;
+    var t = this;
+    _.times(this.date.getDate()-1, function(n) {
+      t.start -= 1;
+      if (t.start < 0) t.start = 6;
     });
 
-    var t = this;
     $.each($('tr', this.template), function(rowIndex, rowValue) {
       $.each($('td',rowValue), function(colIndex, colValue) {
         var cell = $(colValue);

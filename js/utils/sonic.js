@@ -140,7 +140,7 @@
       });
     }
 
-    console.log('Sonic::request', url);
+    //console.log('Sonic::request', url);
 
     $.ajax({
       url: url,
