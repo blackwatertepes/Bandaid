@@ -119,7 +119,8 @@ var EventsView = Backbone.View.extend({
     var marker = Map.getMarkerById(marker_id);
     Map.clearOverlays();
     Map.showOverlay(marker);
-    var places = Yelp.getPlaces(this.gotPlaces, category, term, marker.position.Ta, marker.position.Ua);
+    var point = marker.getPosition();
+    var places = Yelp.getPlaces(this.gotPlaces, category, term, point.lat(), point.lng());
   },
 
   gotPlaces: function(places) {
